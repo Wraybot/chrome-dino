@@ -12,7 +12,8 @@ player_rect = player.get_rect()
 player_rect.center = WIN_rect.center
 
 ground = pygame.image.load("art\ground.png")
-
+ground_rect = ground.get_rect()
+ground_rect.y = 500
 
 clock = pygame.time.Clock()
 
@@ -37,7 +38,7 @@ while True:
     player_rect.y += gravity
             
     WIN.fill("light blue")
-    WIN.blit(ground, (0,0))
+    WIN.blit(ground, ground_rect)
     WIN.blit(player, player_rect)
                
     pygame.display.update()
