@@ -31,9 +31,13 @@ while True:
         keys = pygame.key.get_pressed()
         
         if keys[pygame.K_SPACE]:
-            gravity = -20
+            gravity = -15
+            player_rect.y -= 8
             
     gravity += .5
+    
+    if player_rect.colliderect(ground_rect):
+        gravity = 0
     
     player_rect.y += gravity
             
