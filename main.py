@@ -12,7 +12,7 @@ player_rect = player.get_rect()
 player_rect.center = WIN_rect.center
 
 grounds = [pygame.image.load("art\ground.png")] * 4
-ground_rects = grounds[0].get_rect()
+ground_rects = [grounds[0].get_rect()] * 4
 for ground_rect in  ground_rects:
     ground_rect.y = 500
 
@@ -43,7 +43,8 @@ while True:
     player_rect.y += gravity
             
     WIN.fill("light blue")
-    WIN.blit(ground, ground_rect)
+    for i, ground in  enumerate(grounds):
+        WIN.blit(ground, ground_rects[i])
     WIN.blit(player, player_rect)
                
     pygame.display.update()
