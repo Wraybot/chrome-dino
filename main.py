@@ -12,14 +12,18 @@ player_rect = player.get_rect()
 player_rect.center = WIN_rect.center
 
 grounds = [pygame.image.load("art\ground.png")] * 4
-ground_rects = [grounds[0].get_rect()] * 4
-for ground_rect in  ground_rects:
-    ground_rect.y = 500
+ground_rects =[grounds[0].get_rect()] * 4
 
 clock = pygame.time.Clock()
 
 gravity = 0
 
+for i, ground_rect in enumerate(ground_rects):
+    ground_rect.x = (ground_rect.width / 2) * i
+    ground_rect.y = 500
+    
+    print(ground_rect.x)
+    
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
