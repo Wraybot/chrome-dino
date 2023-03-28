@@ -18,11 +18,10 @@ clock = pygame.time.Clock()
 
 gravity = 0
 
-for i, ground_rect in enumerate(ground_rects):
-    ground_rect.x = (ground_rect.width / 2) * i
-    ground_rect.y = 500
-    
-    print(ground_rect.x)
+for i in range(len(ground_rects)):
+    ground_rects[i].x = (ground_rects[i].width / 2) * i
+    ground_rects[i].y = 500
+
     
 while True:
     for event in pygame.event.get():
@@ -35,14 +34,15 @@ while True:
                 sys.exit()
         keys = pygame.key.get_pressed()
         
-        if keys[pygame.K_SPACE] and player_rect.colliderect(ground_rect):
-            gravity = -15
-            player_rect.y -= 8
+        for ground_rect in ground_rects:
+            if keys[pygame.K_SPACE] and player_rect.colliderect(ground_rect):
+                gravity = -15
+                player_rect.y -= 8
             
     gravity += .5
-    
-    if player_rect.colliderect(ground_rect):
-        gravity = 0
+    for ground_rect in ground_rects:
+        if player_rect.colliderect(ground_rect):
+            gravity = 0
     
     player_rect.y += gravity
             
