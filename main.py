@@ -12,7 +12,7 @@ player_rect = player.get_rect()
 player_rect.center = WIN_rect.center
 
 grounds = [pygame.image.load("art\ground.png")] * 4
-ground_rects =[grounds[0].get_rect()] * 4
+ground_rects = [grounds[0].get_rect(), grounds[0].get_rect(), grounds[0].get_rect(), grounds[0].get_rect()]
 
 clock = pygame.time.Clock()
 
@@ -53,4 +53,4 @@ while True:
                
     pygame.display.update()
     
-    clock.tick(6)
+    clock.tick(60)
