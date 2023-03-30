@@ -1,10 +1,14 @@
 import pygame
 import sys
+from spritesheet import spritesheet
 
 pygame.init()
 
 WIN = pygame.display.set_mode((600, 600))
 WIN_rect = WIN.get_rect()
+
+player_ss = spritesheet("art\dino.png")
+player_images = player_ss.get_images([0, 0, 24, 24])
 
 player = pygame.Surface((20, 20))
 player.fill("black")
