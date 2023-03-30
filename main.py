@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 gravity = 0
 
 for i in range(len(ground_rects)):
-    ground_rects[i].x = (ground_rects[i].width / 2) * i
+    ground_rects[i].x = 336 * i
     ground_rects[i].y = 500
 
     
@@ -38,14 +38,20 @@ while True:
             if keys[pygame.K_SPACE] and player_rect.colliderect(ground_rect):
                 gravity = -15
                 player_rect.y -= 8
-            
+    
+    #gravity
     gravity += .5
     for ground_rect in ground_rects:
         if player_rect.colliderect(ground_rect):
             gravity = 0
+            
+        ground_rect.x -= 2
+        if ground_rect.x <= -336:
+            ground_rect.x = 336 * 3
     
     player_rect.y += gravity
-            
+      
+    #draws objects      
     WIN.fill("light blue")
     for i, ground in  enumerate(grounds):
         WIN.blit(ground, ground_rects[i])
