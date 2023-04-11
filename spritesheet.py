@@ -28,12 +28,12 @@ class spritesheet(object):
         return self.images_at(tups, colorkey)
     
     def enlarge_image(self, image, colorkey = None):
+        new_image = pygame.surface.Surface((image.get_width() * 2, image.get_height() * 2))
+        pygame.transform.scale(image, (image.get_width() * 2, image.get_height() * 2), new_image)
         if colorkey is not None:
             if colorkey is -1:
                 colorkey = image.get_at((0,0))
             image.set_colorkey(colorkey, pygame.RLEACCEL)
-        new_image = pygame.surface.Surface((image.get_width() * 2, image.get_height() * 2))
-        pygame.transform.scale(image, (image.get_width() * 2, image.get_height() * 2), new_image)
         return new_image
         
     
