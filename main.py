@@ -8,7 +8,7 @@ WIN = pygame.display.set_mode((600, 600))
 WIN_rect = WIN.get_rect()
 
 player_ss = spritesheet("art\dino.png")
-player_image = player_ss.image_at([0, 0, 24, 24])
+player_image = player_ss.image_at([0, 0, 24, 24], (0, 0, 0))
 player_image = player_ss.enlarge_image(player_image, (0, 0, 0))
 
 player_rect = player_image.get_rect()
