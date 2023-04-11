@@ -8,11 +8,9 @@ WIN = pygame.display.set_mode((600, 600))
 WIN_rect = WIN.get_rect()
 
 player_ss = spritesheet("art\dino.png")
-player_images = player_ss.get_images([0, 0, 24, 24])
+player_image = player_ss.image_at([0, 0, 24, 24])
 
-player = pygame.Surface((20, 20))
-player.fill("black")
-player_rect = player.get_rect()
+player_rect = player_image.get_rect()
 player_rect.center = WIN_rect.center
 
 grounds = [pygame.image.load("art\ground.png")] * 4
@@ -59,7 +57,7 @@ while True:
     WIN.fill("light blue")
     for i, ground in  enumerate(grounds):
         WIN.blit(ground, ground_rects[i])
-    WIN.blit(player, player_rect)
+    WIN.blit(player_image, player_rect)
                
     pygame.display.update()
     
