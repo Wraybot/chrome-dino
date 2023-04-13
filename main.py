@@ -8,10 +8,15 @@ WIN = pygame.display.set_mode((600, 600))
 WIN_rect = WIN.get_rect()
 
 player_ss = spritesheet("art\dino.png")
-player_image = player_ss.image_at([0, 0, 24, 24], (0, 0, 0))
-player_image = player_ss.enlarge_image(player_image, (0, 0, 0))
+player_images = player_ss.images_at([[4*24, 0, 24, 24], [5*24, 0, 24, 24], [6*24, 0, 24, 24], [7*24, 0, 24, 24], 
+                                     [8*24, 0, 24, 24], [9*24, 0, 24, 24]], (0, 0, 0))
 
-player_rect = player_image.get_rect()
+#fix redundency later
+player_frame = 0
+player_image = player_images[0]
+player_frame_delay = 20
+
+player_rect = player_images[0].get_rect()
 player_rect.center = WIN_rect.center
 
 grounds = [pygame.image.load("art\ground.png")] * 4
@@ -58,6 +63,15 @@ while True:
     WIN.fill("light blue")
     for i, ground in  enumerate(grounds):
         WIN.blit(ground, ground_rects[i])
+    
+    if player_frame_delay <= 0:
+        player_frame += 1
+        if player_frame >= len(player_images):
+            player_frame = 0
+        player_frame_delay = 20
+    else:
+        player_frame_delay -= 3
+        
     WIN.blit(player_image, player_rect)
                
     pygame.display.update()

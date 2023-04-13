@@ -11,6 +11,9 @@ class spritesheet(object):
         rect = pygame.Rect(rectangle)
         image = pygame.Surface(rect.size).convert()
         image.blit(self.sheet, (0, 0), rect)
+        
+        image = self.enlarge_image(image, colorkey)
+        
         if colorkey is not None:
             if colorkey is -1:
                 colorkey = image.get_at((0,0))
