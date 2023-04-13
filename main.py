@@ -13,7 +13,6 @@ player_images = player_ss.images_at([[4*24, 0, 24, 24], [5*24, 0, 24, 24], [6*24
 
 #fix redundency later
 player_frame = 0
-player_image = player_images[0]
 player_frame_delay = 20
 
 player_rect = player_images[0].get_rect()
@@ -72,7 +71,7 @@ while True:
     else:
         player_frame_delay -= 3
         
-    WIN.blit(player_image, player_rect)
+    WIN.blit(player_images[player_frame], player_rect)
                
     pygame.display.update()
     
