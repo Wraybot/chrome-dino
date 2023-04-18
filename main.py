@@ -10,6 +10,13 @@ WIN_rect = WIN.get_rect()
 player_ss = spritesheet("art\dino.png")
 player_images = player_ss.images_at([[4*24, 0, 24, 24], [5*24, 0, 24, 24], [6*24, 0, 24, 24], [7*24, 0, 24, 24], 
                                      [8*24, 0, 24, 24], [9*24, 0, 24, 24]], (0, 0, 0))
+#furcorn colorkey = (186.5, 31.3, 63.7)
+obstacle_image = pygame.image.load("art\_furcorn.png")
+colorkey = obstacle_image.get_at((0,0))
+obstacle_image.set_colorkey(colorkey, pygame.RLEACCEL)
+obstacle_rect = obstacle_image.get_rect()
+obstacle_rect.x = 50
+obstacle_rect.y = 50
 
 #fix redundency later
 player_frame = 0
@@ -70,9 +77,14 @@ while True:
         player_frame_delay = 20
     else:
         player_frame_delay -= 3
+          
+    WIN.blit(obstacle_image, obstacle_rect)
         
     WIN.blit(player_images[player_frame], player_rect)
                
     pygame.display.update()
     
     clock.tick(60)
+    
+    
+    
